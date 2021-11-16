@@ -62,8 +62,8 @@ const users = [
    {
       id: uuidv4(),
       email: "abc123@gmail.com",
-      name: "Abc",
-      lastName: "Def",
+      name: "John",
+      lastName: "Smith",
       password: "password",
       shippingAddress: {
          street: "123 main street",
@@ -91,11 +91,13 @@ export const loginUser = (email, password) => new Promise ((resolve, reject) => 
       try {
          if(foundUser){
             resolve(foundUser)
+            console.log(foundUser)
          };
 
          throw new Error("Incorrect username and/or password. Try Again.")
       } catch(e) {
          reject(e);
+         console.log(e.message)
       }
    }, 1000);
 })

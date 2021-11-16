@@ -6,7 +6,7 @@ const LOG_IN_ACTION = "LOG_IN";
 
 // ACTION CREATER  that will be passed into dispatch
 
-export const loginActionCreater = (user) => (
+export const loginActionCreator = (user) => (
    {type: LOG_IN_ACTION, payload: {user}}
 );
 
