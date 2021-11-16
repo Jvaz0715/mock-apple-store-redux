@@ -5,10 +5,14 @@ import LocalMallSharpIcon from '@mui/icons-material/LocalMallSharp';
 import { Link } from "react-router-dom";
 import { Typography } from '@mui/material';
 
+import { useSelector } from "react-redux";
+
 function NavBar() {
    const {
       productsInBag
    } = useContext(ShoppingBagContext);
+
+   const user = useSelector(state => state.user);
 
    return (
       <Box>
@@ -37,7 +41,7 @@ function NavBar() {
 
                <Link to ="/login">
                   <Typography style={{color: "white"}}>
-                     Login
+                     {user ? `Profile` : `Login`}
                   </Typography>
                </Link>
 
