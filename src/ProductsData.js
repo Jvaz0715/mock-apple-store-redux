@@ -54,3 +54,48 @@ export const fetchProducts = () => new Promise((resolve, reject) => {
       }
    }, 1000);
 });
+
+// create dummy data for users
+// in fullstack we would have a backend of users who have signed up prior
+
+const users = [
+   {
+      id: uuidv4(),
+      email: "abc123@gmail.com",
+      name: "Abc",
+      lastName: "Def",
+      password: "password",
+      shippingAddress: {
+         street: "123 main street",
+         city: "New York",
+         state: "NY",
+         zipCode: "11111",
+      }
+   }
+];
+
+// create loginUser function similar to fetchProducts that will check if our user exists and log us in, if not throw an errormessage
+
+export const loginUser = (email, password) => new Promise ((resolve, reject) => {
+   // we look through our users array to see if the passed in email AND password match that of any user in the array
+   const foundUser = users.find(user => {
+      if(user.email === email && user.password === password) {
+         return true;
+      };
+
+      return false;
+   });
+   console.log("check for user existing");
+
+   setTimeout(() => {
+      try {
+         if(foundUser){
+            resolve(foundUser)
+         };
+
+         throw new Error("Incorrect username and/or password. Try Again.")
+      } catch(e) {
+         reject(e);
+      }
+   }, 1000);
+})
