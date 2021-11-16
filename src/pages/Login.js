@@ -75,7 +75,9 @@ function Form(props) {
 
       </Box>
    )
-}
+};
+
+// TODO: make a user profile page
 
 function Login() {
    // usestate to create Error messaging
@@ -83,10 +85,18 @@ function Login() {
 
    // use react redux useSelector to grab the user in the state
    const user = useSelector(state => state.user);
+   console.log("user")
+   console.log(user)
+
    return (
       <div>
          {error}
-         <Form setError={setError}/>
+         {/* make ternary that shows login form if no user in state, or user shipping info */}
+         {
+            user
+               ? `Shipping Address here!`
+               : <Form setError={setError}/>
+         }
       </div>
    )
 }
