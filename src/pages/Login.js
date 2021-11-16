@@ -29,7 +29,10 @@ function Form(props) {
    // here we use the loginUser function we imported
    const onSubmit = () => {
       loginUser(email, password)
-         .then(user =>dispatch(loginActionCreator(user)))
+         .then(user =>{
+            dispatch(loginActionCreator(user))
+            setError("")
+         })
          .catch(e => {
             console.log("error: ", e);
             setError(e.message)
@@ -101,14 +104,14 @@ function Login() {
    console.log(user)
 
    return (
-      <div>
-         {error}
+      <div style={{display: "flex", flexDirection: "column", justifyContent: "center", alignItems:"center"}}>
          {/* make ternary that shows login form if no user in state, or user shipping info */}
          {
             user
                ? ShippingAddress(user)
                : <Form setError={setError}/>
          }
+         {error ? <span style={{color: "red"}}>{error}</span> : ""}
       </div>
    )
 }
