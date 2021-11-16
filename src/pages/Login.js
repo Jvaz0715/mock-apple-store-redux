@@ -77,6 +77,18 @@ function Form(props) {
    )
 };
 
+function ShippingAddress(user) {
+   return (
+      <div>
+         <h1>Shipping Address</h1>
+         <p>Street: {user.shippingAddress.street}</p>
+         <p>City: {user.shippingAddress.city}</p>
+         <p>State: {user.shippingAddress.state}</p>
+         <p>Zip Code: {user.shippingAddress.zipCode}</p>
+      </div>
+   )
+};
+
 // TODO: make a user profile page
 
 function Login() {
@@ -94,7 +106,7 @@ function Login() {
          {/* make ternary that shows login form if no user in state, or user shipping info */}
          {
             user
-               ? `Shipping Address here!`
+               ? ShippingAddress(user)
                : <Form setError={setError}/>
          }
       </div>
