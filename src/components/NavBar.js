@@ -27,13 +27,20 @@ function NavBar() {
                   <img 
                      src="https://www.freepnglogos.com/uploads/apple-logo-png/apple-logo-png-what-you-need-know-before-rebranding-11.png"
                      alt="apple logo"
-                     width="70px"
-                     height="70px"
+                     width="50px"
+                     height="50px"
                   />
                </Link>
                <Typography style={{textAlign:"center", width: "33%"}}>
                   Apple Store
                </Typography>
+
+               <Link to ="/login">
+                  <Typography style={{color: "white"}}>
+                     Login
+                  </Typography>
+               </Link>
+
                <Link 
                   to="/bag" 
                   style={{
@@ -43,7 +50,7 @@ function NavBar() {
                      textDecoration: "none"
                   }}
                >  
-                  <IconButton size="medium" style={{color: "white"}} edge="end" aria-label="menu">
+                  <IconButton size="small" style={{color: "white"}} edge="end" aria-label="menu">
                      <LocalMallSharpIcon style={{fontSize:"50px"}} position="end"/>
                      <Typography style={{display:"flex", justifyContent:"end" , alignItems:"end", marginRight:"-5px"}}>
                         {productsInBag.length > 0 && productsInBag.length}

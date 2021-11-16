@@ -8,6 +8,7 @@ import { fetchProducts } from "./ProductsData"; //brings in our mock data
 import NavBar from "./components/NavBar";
 import Home from "./pages/Home";
 import ShoppingBag from "./pages/ShoppingBag";
+import Login from "./pages/Login";
 
 import './App.css';
 
@@ -95,6 +96,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/bag" element={<ShoppingBag />} />
+          <Route path="/login" element={<Login />}/>
         </Routes>
       </Router>
     </ShoppingBagContext.Provider>
