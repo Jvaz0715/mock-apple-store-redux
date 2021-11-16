@@ -5,6 +5,11 @@ import { v4 as uuidv4 } from 'uuid';
 import { ShoppingBagContext } from "./context/ShoppingBagContext"; //brings in the Shopping Bag Context we created
 import { fetchProducts } from "./ProductsData"; //brings in our mock data
 
+// import Provider from react-redux
+import { Provider as ReduxProvider } from "react-redux";
+// import our store file
+import store from "./redux";
+
 import NavBar from "./components/NavBar";
 import Home from "./pages/Home";
 import ShoppingBag from "./pages/ShoppingBag";
@@ -87,19 +92,19 @@ function App() {
   };
 
   return (
-    <ShoppingBagContext.Provider value={shoppingBagProviderValue}>
-      <Router>
-        <NavBar />
-        {/* latest update for react-router-dom does NOT use switch
-          it now uses Routes
-        */}
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/bag" element={<ShoppingBag />} />
-          <Route path="/login" element={<Login />}/>
-        </Routes>
-      </Router>
-    </ShoppingBagContext.Provider>
+    // our redux store is now available to all of our app!
+    <ReduxProvider store={store}>
+      <ShoppingBagContext.Provider value={shoppingBagProviderValue}>
+        <Router>
+          <NavBar />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/bag" element={<ShoppingBag />} />
+            <Route path="/login" element={<Login />}/>
+          </Routes>
+        </Router>
+      </ShoppingBagContext.Provider>
+    </ReduxProvider>
   );
 }
 
